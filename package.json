@@ -1,6 +1,6 @@
 {
-  "name": "@mystify/dlib",
-  "version": "0.9.0",
+  "name": "@mystify/buildmanagment",
+  "version": "0.9.1",
   "description": "A simple module to increment build number in package.json for webpack projects.",
   "main": "index.js",
   "scripts": {},
