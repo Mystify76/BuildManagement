@@ -20,6 +20,8 @@ function incrementVersion(packageFileName, writeVersionToFile = true) {
   version.day      = _.toString(moment().format("DD"));
   version.hour     = _.toString(moment().format("HH"));
   version.minute   = _.toString(moment().format("mm"));
+  version.second   = _.toString(moment().format("ss"));
+  version.date     = _.toString(moment().valueOf());
 
   packageFile.build = version;
   fs.writeFileSync(packageFileName, JSON.stringify(packageFile, null, 2), "utf8");
@@ -28,7 +30,7 @@ function incrementVersion(packageFileName, writeVersionToFile = true) {
 }
 
 function buildObjectToVersionString(buildObject) {
-  return `${buildObject.major}.${buildObject.minor}.${buildObject.revision}.${buildObject.build}   ${buildObject.year}/${buildObject.month}/${buildObject.day} ${buildObject.hour}:${buildObject.minute}`;
+  return `${buildObject.major}.${buildObject.minor}.${buildObject.revision}.${buildObject.build}   ${moment(buildObject.date).format("MMM DD YYYY  HH:mm:ss")}`;
 }
 
 function addVersionScriptTagToIndex(indexFilename, versionString) {
@@ -36,8 +38,7 @@ function addVersionScriptTagToIndex(indexFilename, versionString) {
   if (indexFile) {
     if (indexFile.indexOf("const CURRENTVERSION") < 0) {
       indexFile = indexFile.replace(/<\/head>/, `<script>const CURRENTVERSION = "${versionString}";</script>${"\n"}</head>`);
-    }
-    else {
+    } else {
       indexFile = indexFile.replace(/<script>const CURRENTVERSION = (.*)?;<\/script>/, `<script>const CURRENTVERSION = "${versionString}";</script>`);
     }
     fs.writeFileSync(indexFilename, indexFile, "utf8");
@@ -49,7 +50,6 @@ function getVersion(packageFilename) {
   if (!packageFile) return undefined;
   packageFile = JSON.parse(packageFile);
   return packageFile.build || {};
-  // return `${version.major}.${version.minor}.${version.revision}.${version.build}   ${version.year}/${version.month}/${version.day} ${version.hour}:${version.minute}`;
 }
 
 module.exports = {incrementVersion, getVersion, buildObjectToVersionString, addVersionScriptTagToIndex};
