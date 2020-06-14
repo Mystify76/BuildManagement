@@ -52,4 +52,31 @@ function getVersion(packageFilename) {
   return packageFile.build || {};
 }
 
+function incrementRevisionNumber(packageFileName, writeVersionToFile = true) {
+  let packageFile = fs.readFileSync(packageFileName, "utf8");
+  if (!packageFile) return undefined;
+
+  packageFile = JSON.parse(packageFile);
+
+  let packageVersion = packageFile.version;
+  let version        = packageFile.build || {};
+
+  version.major    = _.toString(packageVersion.split(".")[0]);
+  version.minor    = _.toString(packageVersion.split(".")[1]);
+  version.revision = _.toNumber(_.toString(packageVersion.split(".")[2])) + 1;
+  version.build    = _.padStart((_.toNumber(version.build) || 0) + 1, 4, "0");
+  version.year     = _.toString(moment().format("YYYY"));
+  version.month    = _.toString(moment().format("MM"));
+  version.day      = _.toString(moment().format("DD"));
+  version.hour     = _.toString(moment().format("HH"));
+  version.minute   = _.toString(moment().format("mm"));
+  version.second   = _.toString(moment().format("ss"));
+  version.date     = _.toString(moment().valueOf());
+
+  packageFile.build = version;
+  fs.writeFileSync(packageFileName, JSON.stringify(packageFile, null, 2), "utf8");
+  if (writeVersionToFile) fs.writeFileSync(packageFileName.replace("package.json", "version.json"), JSON.stringify(version, null, 2), "utf8");
+  return version;
+}
+
 module.exports = {incrementVersion, getVersion, buildObjectToVersionString, addVersionScriptTagToIndex};
