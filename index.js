@@ -79,4 +79,4 @@ function incrementRevisionNumber(packageFileName, writeVersionToFile = true) {
   return version;
 }
 
-module.exports = {incrementVersion, getVersion, buildObjectToVersionString, addVersionScriptTagToIndex};
+module.exports = {incrementVersion, getVersion, buildObjectToVersionString, addVersionScriptTagToIndex, incrementRevisionNumber};
