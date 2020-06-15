@@ -6,12 +6,20 @@
   "homepage": "https://github.com/Mystify76/BuildManagement",
   "author": "David Gallant",
   "license": "MIT",
+  "scripts": {
+    "deploy": "node deploy.js"
+  },
   "dependencies": {
     "fs-extra": "^8.1.0",
-    "moment"  : "^2.24.0", "lodash": "latest"
+    "moment": "^2.24.0",
+    "lodash": "latest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Mystify76/BuildManagement.git"
+  },
+  "devDependencies": {
+    "prompt-promise": "^1.0.3",
+    "simple-git": "^2.6.0"
   }
 }
