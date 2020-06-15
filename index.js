@@ -73,7 +73,7 @@ function incrementRevisionNumber(packageFileName, writeVersionToFile = true) {
   version.second   = _.toString(moment().format("ss"));
   version.date     = _.toString(moment().valueOf());
 
-  packageFile.version = `${verion.major}.${version.minor}.${version.revision}`;
+  packageFile.version = `${version.major}.${version.minor}.${version.revision}`;
   packageFile.build = version;
   fs.writeFileSync(packageFileName, JSON.stringify(packageFile, null, 2), "utf8");
   if (writeVersionToFile) fs.writeFileSync(packageFileName.replace("package.json", "version.json"), JSON.stringify(version, null, 2), "utf8");
