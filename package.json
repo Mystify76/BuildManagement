@@ -1,6 +1,6 @@
 {
   "name": "@mystify/buildmanagement",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A simple module to increment build number in package.json for webpack projects.",
   "main": "index.js",
   "homepage": "https://github.com/Mystify76/BuildManagement",

@@ -63,7 +63,7 @@ function incrementRevisionNumber(packageFileName, writeVersionToFile = true) {
 
   version.major    = _.toString(packageVersion.split(".")[0]);
   version.minor    = _.toString(packageVersion.split(".")[1]);
-  version.revision = _.toNumber(_.toString(packageVersion.split(".")[2])) + 1;
+  version.revision = _.toString(_.toNumber(_.toString(packageVersion.split(".")[2])) + 1);
   version.build    = _.padStart((_.toNumber(version.build) || 0) + 1, 4, "0");
   version.year     = _.toString(moment().format("YYYY"));
   version.month    = _.toString(moment().format("MM"));
