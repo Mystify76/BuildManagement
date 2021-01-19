@@ -1,6 +1,6 @@
 {
   "name": "@mystify/buildmanagement",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "A simple module to increment build number in package.json for webpack projects.",
   "main": "index.js",
   "homepage": "https://github.com/Mystify76/BuildManagement",
@@ -10,9 +10,9 @@
     "deploy": "node deploy.js"
   },
   "dependencies": {
-    "fs-extra": "^8.1.0",
-    "moment": "^2.24.0",
-    "lodash": "latest"
+    "fs-extra": "^9.0.1",
+    "lodash": "latest",
+    "moment": "^2.29.1"
   },
   "repository": {
     "type": "git",
@@ -20,19 +20,19 @@
   },
   "devDependencies": {
     "prompt-promise": "^1.0.3",
-    "simple-git": "^2.6.0"
+    "simple-git": "^2.31.0"
   },
   "build": {
     "major": "1",
     "minor": "0",
-    "revision": "10",
-    "build": "0001",
-    "year": "2020",
-    "month": "06",
-    "day": "15",
-    "hour": "10",
-    "minute": "39",
-    "second": "57",
-    "date": "1592228397223"
+    "revision": "12",
+    "build": "0003",
+    "year": "2021",
+    "month": "01",
+    "day": "19",
+    "hour": "13",
+    "minute": "09",
+    "second": "51",
+    "date": "1611076191306"
   }
 }
